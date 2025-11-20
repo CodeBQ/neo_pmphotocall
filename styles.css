@@ -1,0 +1,112 @@
+:root {
+  --primary: #4f46e5;
+  --secondary: #111827;
+  --muted: #6b7280;
+  --bg-soft: #eef2ff;
+  --card: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--secondary);
+  background-color: #f8fafc;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0f172a;
+}
+
+.navbar-brand {
+  letter-spacing: 0.2px;
+}
+
+.bg-soft {
+  background-color: var(--bg-soft);
+  color: #4338ca;
+}
+
+#hero {
+  background: radial-gradient(circle at 20% 20%, rgba(79, 70, 229, 0.08), transparent 25%),
+    radial-gradient(circle at 80% 0%, rgba(16, 185, 129, 0.08), transparent 20%),
+    #f8fafc;
+}
+
+.hero-card {
+  background: var(--card);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.icon-circle {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.service-card,
+.package-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+.package-card.featured {
+  border: 1px solid rgba(79, 70, 229, 0.3);
+  box-shadow: 0 12px 40px rgba(79, 70, 229, 0.15);
+}
+
+.package-card .badge {
+  font-size: 12px;
+}
+
+.gallery-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  min-height: 260px;
+}
+
+.gallery-card img {
+  transition: transform 0.6s ease;
+}
+
+.gallery-card:hover img {
+  transform: scale(1.05);
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.5));
+  color: #fff;
+  font-weight: 600;
+}
+
+#contact .form-label {
+  font-weight: 600;
+}
+
+footer {
+  background: #fff;
+}
+
+@media (max-width: 767px) {
+  #hero .display-4 {
+    font-size: 2.2rem;
+  }
+}
