@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Post – Your Name Photography</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">Your Name Photography</div>
+      <nav class="nav">
+        <a href="index.html#hero">Home</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#blog">Blog</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <a href="index.html#blog" class="btn-link">← Back to blog</a>
+
+        <article class="post">
+          <h1 id="postTitle">Loading…</h1>
+          <p id="postMeta" class="meta"></p>
+
+          <div id="postContainer" class="post-body">
+            <p>Loading post...</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Your Name Photography. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+  <script src="posts.js"></script>
+  <script src="post.js"></script>
+</body>
+</html>
