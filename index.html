@@ -1,278 +1,201 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name Photography</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-content">
+      <div class="logo">Your Name Photography</div>
+      <nav class="nav">
+        <a href="#hero">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero hero-photo">
+      <div class="overlay"></div>
+      <div class="container hero-content">
+        <div class="hero-text">
+          <h1>Fragments of Light, Frozen in Time</h1>
+          <p>
+            I’m a photographer capturing portraits, streets, and quiet landscapes.
+            Explore my portfolio and read behind-the-lens stories on the blog.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-primary" data-scroll-target="#portfolio">View Portfolio</button>
+            <button class="btn-secondary" data-scroll-target="#blog">Read the Blog</button>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h2>Currently Shooting</h2>
+          <p id="statusText">Personal project: Night streets on 35mm film.</p>
+          <button id="statusToggle" class="btn-ghost">Toggle project</button>
+        </div>
+      </div>
+    </section>
 
-    <title>Nova Pierce · Photography</title>
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
       <div class="container">
-        <a class="navbar-brand fw-bold" href="#hero">Nova Pierce</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#journal">Journal</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        <div class="section-header">
+          <h2>Portfolio</h2>
+          <p>Selected work across genres. Click a filter to browse.</p>
+        </div>
+
+        <div class="portfolio-filters">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="portraits">Portraits</button>
+          <button class="filter-btn" data-filter="landscapes">Landscapes</button>
+          <button class="filter-btn" data-filter="street">Street</button>
+          <button class="filter-btn" data-filter="film">Film</button>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="portfolio-item" data-category="portraits">
+            <div class="thumb" style="background-image: url('https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg');"></div>
+            <div class="portfolio-info">
+              <h3>Golden Hour Portrait</h3>
+              <p>Soft backlight portraits in natural light.</p>
+              <span class="tag">Portraits</span>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="landscapes">
+            <div class="thumb" style="background-image: url('https://images.pexels.com/photos/417074/pexels-photo-417074.jpeg');"></div>
+            <div class="portfolio-info">
+              <h3>Misty Mountain Range</h3>
+              <p>Early morning landscapes in the highlands.</p>
+              <span class="tag">Landscapes</span>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="street film">
+            <div class="thumb" style="background-image: url('https://images.pexels.com/photos/220118/pexels-photo-220118.jpeg');"></div>
+            <div class="portfolio-info">
+              <h3>Neon Nights</h3>
+              <p>Street scenes on 35mm film.</p>
+              <span class="tag">Street · Film</span>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="street">
+            <div class="thumb" style="background-image: url('https://images.pexels.com/photos/258109/pexels-photo-258109.jpeg');"></div>
+            <div class="portfolio-info">
+              <h3>Crosswalk Stories</h3>
+              <p>Everyday life in motion, shot candidly.</p>
+              <span class="tag">Street</span>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="film portraits">
+            <div class="thumb" style="background-image: url('https://images.pexels.com/photos/598917/pexels-photo-598917.jpeg');"></div>
+            <div class="portfolio-info">
+              <h3>35mm Studio Study</h3>
+              <p>Classic studio portraits on color film.</p>
+              <span class="tag">Portraits · Film</span>
+            </div>
+          </article>
+
+          <article class="portfolio-item" data-category="landscapes film">
+            <div class="thumb" style="background-image: url('https://images.pexels.com/photos/417142/pexels-photo-417142.jpeg');"></div>
+            <div class="portfolio-info">
+              <h3>Coastal Silence</h3>
+              <p>Long exposures of empty beaches.</p>
+              <span class="tag">Landscapes · Film</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section section-alt">
+      <div class="container">
+        <div class="section-header">
+          <h2>Blog</h2>
+          <p>Thoughts on gear, technique, and the stories behind my images.</p>
+        </div>
+
+        <div id="blogList" class="blog-grid"></div>
+
+        <div id="blogPreview" class="blog-preview" aria-live="polite">
+          <h3>Blog preview</h3>
+          <p>Select a post above to read a short preview here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+      <div class="container about-layout">
+        <div>
+          <h2>About Me</h2>
+          <p>
+            I’m a photographer based in [Your City], drawn to quiet moments, strong light,
+            and honest expressions. My work ranges from personal street projects to portraits
+            and commissioned shoots.
+          </p>
+          <p>
+            When I’m not shooting, I’m usually writing about process, experimenting with new
+            gear, or walking the city with a film camera and a single prime lens.
+          </p>
+        </div>
+        <div class="about-card">
+          <h3>Selected Focus Areas</h3>
+          <ul>
+            <li>Portrait sessions (natural light & studio)</li>
+            <li>Street and documentary projects</li>
+            <li>Editorial & branding photography</li>
+            <li>Film workflows (35mm & 120)</li>
           </ul>
         </div>
       </div>
-    </nav>
+    </section>
 
-    <main class="mt-5 pt-5">
-      <section id="hero" class="py-5">
-        <div class="container">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-6">
-              <span class="badge bg-soft">Photography & Visual Notes</span>
-              <h1 class="display-4 fw-bold mt-3">Light-chasing stories for people and places.</h1>
-              <p class="lead text-muted">I am Nova, a photographer who thrives on honest portraits, quiet city corners, and the way golden hour wraps around everything it loves. Explore a curated set of personal work, travel studies, and collaborations.</p>
-              <div class="d-flex gap-3 flex-wrap">
-                <a class="btn btn-primary btn-lg" href="#portfolio">View portfolio</a>
-                <a class="btn btn-outline-secondary btn-lg" href="#contact">Start a conversation</a>
-              </div>
-              <div class="d-flex align-items-center gap-4 mt-4 text-muted small">
-                <div class="d-flex align-items-center gap-2">
-                  <span class="icon-circle bg-primary"></span>
-                  <span>Based in Portland · travels often</span>
-                </div>
-                <div class="d-flex align-items-center gap-2">
-                  <span class="icon-circle bg-success"></span>
-                  <span>Available for portraits & editorials</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-5 offset-lg-1">
-              <div class="hero-card shadow-lg">
-                <img class="img-fluid rounded" src="https://images.unsplash.com/photo-1530023367847-a683933f4177?auto=format&fit=crop&w=1100&q=80" alt="Portrait at golden hour">
-                <div class="p-4">
-                  <div class="d-flex justify-content-between align-items-center mb-2">
-                    <span class="fw-semibold">Recent set</span>
-                    <span class="badge bg-primary">Morning light series</span>
-                  </div>
-                  <p class="mb-3 text-muted">A study on how early light softens concrete. Shot across empty streets, rooftops, and café windows before the city wakes.</p>
-                  <div class="d-flex gap-3">
-                    <div>
-                      <p class="text-muted mb-1">Frames collected</p>
-                      <p class="h4 mb-0">162</p>
-                    </div>
-                    <div>
-                      <p class="text-muted mb-1">Locations</p>
-                      <p class="h4 mb-0">7 neighborhoods</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <!-- Contact Section -->
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <h2>Contact</h2>
+        <p class="section-intro">
+          For bookings, collaborations, or questions about the blog, drop me a message.
+        </p>
+        <form id="contactForm" class="contact-form">
+          <div class="form-row">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required />
           </div>
-        </div>
-      </section>
-
-      <section id="portfolio" class="py-5 bg-light">
-        <div class="container">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
-            <div>
-              <p class="text-primary text-uppercase small fw-bold mb-1">Portfolio</p>
-              <h2 class="fw-bold mb-0">Selected frames & stories</h2>
-            </div>
-            <span class="text-muted">Personal work, collaborations, and travel studies</span>
+          <div class="form-row">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required />
           </div>
-          <div class="row g-3">
-            <div class="col-sm-6 col-lg-4">
-              <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=900&q=80" alt="Portrait in blue light" class="w-100 h-100 object-fit-cover">
-                <div class="gallery-overlay">Portrait · Studio</div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-              <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1529333166433-7750a6dd5a70?auto=format&fit=crop&w=900&q=80" alt="Colorful event" class="w-100 h-100 object-fit-cover">
-                <div class="gallery-overlay">City · Golden hour</div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-              <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Minimal product" class="w-100 h-100 object-fit-cover">
-                <div class="gallery-overlay">Objects · Editorial</div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-              <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1441123694162-e54a981ceba3?auto=format&fit=crop&w=900&q=80" alt="Foggy forest" class="w-100 h-100 object-fit-cover">
-                <div class="gallery-overlay">Outdoors · Mist trail</div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-              <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Quiet café" class="w-100 h-100 object-fit-cover">
-                <div class="gallery-overlay">Places · Café corners</div>
-              </div>
-            </div>
-            <div class="col-sm-6 col-lg-4">
-              <div class="gallery-card">
-                <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=900&q=80" alt="Portrait with color" class="w-100 h-100 object-fit-cover">
-                <div class="gallery-overlay">Portrait · Color study</div>
-              </div>
-            </div>
+          <div class="form-row">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
           </div>
-        </div>
-      </section>
-
-      <section id="about" class="py-5">
-        <div class="container">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-5">
-              <div class="ratio ratio-4x3 rounded overflow-hidden shadow-lg">
-                <img src="https://images.unsplash.com/photo-1455659817273-f96807779a8d?auto=format&fit=crop&w=1200&q=80" alt="Nova behind the camera" class="w-100 h-100 object-fit-cover">
-              </div>
-            </div>
-            <div class="col-lg-7">
-              <p class="text-primary text-uppercase small fw-bold mb-1">About</p>
-              <h2 class="fw-bold">Curious by nature, intentional with light.</h2>
-              <p class="text-muted">I started photography with a borrowed film camera and a habit of wandering. Today, I balance client collaborations with long-form personal projects that explore memory, distance, and the glow between them.</p>
-              <div class="row g-3">
-                <div class="col-sm-6">
-                  <div class="p-3 bg-white shadow-sm rounded">
-                    <p class="h5 mb-1">Approach</p>
-                    <p class="text-muted small mb-0">Slow looking, gentle direction, and cinematic color work to keep every frame honest.</p>
-                  </div>
-                </div>
-                <div class="col-sm-6">
-                  <div class="p-3 bg-white shadow-sm rounded">
-                    <p class="h5 mb-1">Tools</p>
-                    <p class="text-muted small mb-0">Digital + 35mm film. Prefers natural light, with a soft spot for prime lenses.</p>
-                  </div>
-                </div>
-              </div>
-              <div class="d-flex gap-4 mt-3 text-muted">
-                <div>
-                  <p class="fw-semibold mb-0">12 years</p>
-                  <p class="small mb-0">Behind the camera</p>
-                </div>
-                <div>
-                  <p class="fw-semibold mb-0">4 cities</p>
-                  <p class="small mb-0">Called home</p>
-                </div>
-                <div>
-                  <p class="fw-semibold mb-0">Always</p>
-                  <p class="small mb-0">Searching for light</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="journal" class="py-5 bg-light">
-        <div class="container">
-          <div class="d-flex justify-content-between align-items-center flex-wrap gap-3 mb-4">
-            <div>
-              <p class="text-primary text-uppercase small fw-bold mb-1">Journal</p>
-              <h2 class="fw-bold mb-0">Recent notes</h2>
-            </div>
-            <span class="text-muted">Thoughts on process, travel, and small experiments</span>
-          </div>
-          <div class="row g-4">
-            <div class="col-md-4">
-              <div class="service-card h-100">
-                <p class="h5 mb-2">Finding quiet frames in busy streets</p>
-                <p class="text-muted small">Notes from Tokyo walks, learning to wait for the pause between the rush.</p>
-                <div class="d-flex align-items-center gap-2 text-muted small">
-                  <span class="icon-circle bg-primary"></span>
-                  <span>Filed under: City</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="service-card h-100">
-                <p class="h5 mb-2">Why I keep returning to film</p>
-                <p class="text-muted small">On embracing imperfections, slower shooting, and the surprise of scans.</p>
-                <div class="d-flex align-items-center gap-2 text-muted small">
-                  <span class="icon-circle bg-success"></span>
-                  <span>Filed under: Process</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="service-card h-100">
-                <p class="h5 mb-2">Packing light for long trips</p>
-                <p class="text-muted small">A minimal kit for flights, trains, and quiet hikes when weight matters.</p>
-                <div class="d-flex align-items-center gap-2 text-muted small">
-                  <span class="icon-circle bg-warning"></span>
-                  <span>Filed under: Travel</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="contact" class="py-5">
-        <div class="container">
-          <div class="row g-4">
-            <div class="col-lg-5">
-              <p class="text-primary text-uppercase small fw-bold mb-1">Contact</p>
-              <h2 class="fw-bold">Let us make something together.</h2>
-              <p class="text-muted">Have a project, collaboration, or gallery inquiry? Send a note and I will reply within two business days with next steps and a simple plan.</p>
-              <div class="p-3 bg-white rounded shadow-sm">
-                <p class="fw-semibold mb-1">Currently open for</p>
-                <p class="mb-1">Portrait sessions · Editorial features · Travel collaborations</p>
-                <p class="mb-0 text-muted" id="responseTime">Replies within 48 hours</p>
-              </div>
-            </div>
-            <div class="col-lg-7">
-              <div class="bg-white rounded shadow-sm p-4">
-                <form id="contactForm" class="row g-3">
-                  <div class="col-md-6">
-                    <label class="form-label" for="name">Name</label>
-                    <input class="form-control" id="name" name="name" type="text" placeholder="Jordan Rivers" required>
-                  </div>
-                  <div class="col-md-6">
-                    <label class="form-label" for="email">Email</label>
-                    <input class="form-control" id="email" name="email" type="email" placeholder="you@example.com" required>
-                  </div>
-                  <div class="col-12">
-                    <label class="form-label" for="project">Project or note</label>
-                    <textarea class="form-control" id="project" name="project" rows="4" placeholder="Tell me what you have in mind—shoot location, mood, deadline." required></textarea>
-                  </div>
-                  <div class="col-12 d-flex gap-3 align-items-center">
-                    <button class="btn btn-primary" type="submit">Send message</button>
-                    <div class="text-success d-none" id="formConfirmation">Message sent! I will be in touch soon.</div>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="py-4 border-top">
-      <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-        <div>
-          <p class="fw-bold mb-1">© <span id="currentYear"></span> Nova Pierce</p>
-          <p class="text-muted small mb-0">Portraits, personal essays, and visual notes from wherever light falls.</p>
-        </div>
-        <div class="d-flex gap-3 text-muted small">
-          <a href="#portfolio" class="text-muted text-decoration-none">Portfolio</a>
-          <a href="#journal" class="text-muted text-decoration-none">Journal</a>
-          <a href="#contact" class="text-muted text-decoration-none">Contact</a>
-        </div>
+          <button type="submit" class="btn-primary">Send message</button>
+          <p id="formStatus" class="form-status" aria-live="polite"></p>
+        </form>
       </div>
-    </footer>
+    </section>
+  </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="main.js"></script>
-  </body>
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Your Name Photography. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="posts.js"></script>
+  <script src="app.js"></script>
+</body>
 </html>
