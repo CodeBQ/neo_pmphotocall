@@ -24,5 +24,5 @@
   titleEl.textContent = post.title;
   metaEl.textContent = `${post.category} · ${post.readTime}`;
   container.innerHTML = post.body.map((p) => `<p>${p}</p>`).join("");
-  document.title = `${post.title} – Your Name Photography`;
+  document.title = `${post.title} – ${SITE_CONFIG.photographerName} Photography`;
 })();
