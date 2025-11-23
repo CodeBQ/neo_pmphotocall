@@ -78,6 +78,33 @@ function setupBlogPreview() {
   });
 }
 
+// --- Apply global SITE_CONFIG to the page ---
+function applySiteConfig() {
+  if (!window.SITE_CONFIG) return;
+
+  const { photographerName, tagline, city, socials } = SITE_CONFIG;
+
+  const logoEl = document.getElementById("siteLogo");
+  const taglineEl = document.getElementById("heroTagline");
+  const cityEl = document.getElementById("aboutCity");
+  const socialLinksEl = document.getElementById("socialLinks");
+
+  if (logoEl) logoEl.textContent = `${photographerName} Photography`;
+  if (taglineEl) taglineEl.textContent = tagline;
+  if (cityEl) cityEl.textContent = city;
+
+  if (socialLinksEl) {
+    socialLinksEl.innerHTML = `
+      ${socials.instagram ? `<a href="${socials.instagram}" target="_blank">Instagram</a>` : ""}
+      ${socials.youtube ? `<a href="${socials.youtube}" target="_blank">YouTube</a>` : ""}
+      ${socials.twitter ? `<a href="${socials.twitter}" target="_blank">Twitter</a>` : ""}
+      ${socials.email ? `<a href="${socials.email}">Email</a>` : ""}
+    `;
+  }
+}
+
+// Call once on page load
+applySiteConfig();
 renderBlogList();
 setupBlogPreview();
 
