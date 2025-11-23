@@ -9,7 +9,7 @@
 <body>
   <header class="site-header">
     <div class="container header-content">
-      <div class="logo">Your Name Photography</div>
+      <div class="logo" id="siteLogo"></div>
       <nav class="nav">
         <a href="#hero">Home</a>
         <a href="#portfolio">Portfolio</a>
@@ -26,7 +26,7 @@
       <div class="overlay"></div>
       <div class="container hero-content">
         <div class="hero-text">
-          <h1>Fragments of Light, Frozen in Time</h1>
+          <h1 id="heroTagline"></h1>
           <p>
             I’m a photographer capturing portraits, streets, and quiet landscapes.
             Explore my portfolio and read behind-the-lens stories on the blog.
@@ -141,7 +141,7 @@
         <div>
           <h2>About Me</h2>
           <p>
-            I’m a photographer based in [Your City], drawn to quiet moments, strong light,
+            I’m a photographer based in <span id="aboutCity"></span>, drawn to quiet moments, strong light,
             and honest expressions. My work ranges from personal street projects to portraits
             and commissioned shoots.
           </p>
@@ -190,6 +190,7 @@
   </main>
 
   <footer class="site-footer">
+    <div class="social-links" id="socialLinks"></div>
     <div class="container">
       <p>© <span id="year"></span> Your Name Photography. All rights reserved.</p>
     </div>
