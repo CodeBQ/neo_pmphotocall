@@ -2,14 +2,13 @@
 // Global site config
 
 const SITE_CONFIG = {
-  photographerName: "Your Name",
-  city: "Your City",
-  tagline: "Fragments of Light, Frozen in Time",
-
+  photographerName: "Amo Urumyan",
+  city: "Denver, CO",
+  tagline: "Stories Told Through Light and Film",
   socials: {
-    instagram: "https://instagram.com/yourprofile",
-    youtube: "https://youtube.com/yourchannel",
-    twitter: "https://twitter.com/yourprofile",
-    email: "mailto:hello@example.com"
+    instagram: "https://instagram.com/amo",
+    youtube: "",
+    twitter: "",
+    email: "mailto:amo@example.com"
   }
 };
