@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#111827"/>
+  <rect x="120" y="80" width="660" height="440" rx="48" fill="#22d3ee" opacity="0.12" stroke="#22d3ee" stroke-width="8" stroke-dasharray="18 14"/>
+  <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#22d3ee" font-size="56" font-family="Arial, sans-serif" opacity="0.9">
+    City at Dusk
+  </text>
+</svg>
