@@ -21,7 +21,7 @@ function setCopyrightYear() {
 function renderPortfolio() {
   const params = new URLSearchParams(window.location.search);
   const slug = params.get("portfolio") || "portfolio1";
-  const portfolio = PORTFOLIO_DATA[slug];
+  const portfolio = PORTFOLIOS[slug];
 
   const titleEl = document.getElementById("portfolioTitle");
   const categoryEl = document.getElementById("portfolioCategory");
@@ -31,7 +31,8 @@ function renderPortfolio() {
 
   if (!portfolio) {
     if (errorEl) {
-      errorEl.textContent = "We couldn't find that portfolio. Try another link from the homepage.";
+      errorEl.textContent =
+        "We couldn't find that portfolio. Try another link from the homepage.";
       errorEl.hidden = false;
     }
     if (galleryEl) {
@@ -58,9 +59,12 @@ function renderPortfolio() {
       const figure = document.createElement("figure");
       figure.className = "portfolio-shot";
 
+      console.log(src);
+      console.log("res:-" + resolvePortfolioImages(slug));
+
       const img = document.createElement("img");
-      img.src = src;
-      img.alt = `${portfolio.title} – image ${index + 1}`;
+      img.src = resolvePortfolioImages(slug)[index];
+      img.alt = `${portfolio.title} – image ${index}`;
 
       const caption = document.createElement("figcaption");
       caption.textContent = `Frame ${index + 1} from ${portfolio.title}`;

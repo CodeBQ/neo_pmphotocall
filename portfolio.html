@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio – Your Name Photography</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <header class="site-header">
-    <div class="container header-content">
-      <div class="logo" id="siteLogo">Your Name Photography</div>
-      <nav class="nav">
-        <a href="index.html#hero">Home</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="index.html#blog">Blog</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="container">
-        <a class="btn-link" href="index.html#portfolio">← Back to portfolio grid</a>
-
-        <div class="portfolio-page-header">
-          <p class="eyebrow" id="portfolioCategory">Portfolio</p>
-          <h1 id="portfolioTitle">Loading…</h1>
-          <p class="section-intro" id="portfolioDescription">Pulling in images from the selected collection.</p>
-        </div>
-
-        <p id="portfolioError" role="status" hidden></p>
-
-        <div id="portfolioGallery" class="portfolio-gallery" aria-live="polite"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio – Your Name Photography</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-content">
+        <div class="logo" id="siteLogo">Your Name Photography</div>
+        <nav class="nav">
+          <a href="index.html#hero">Home</a>
+          <a href="index.html#portfolio">Portfolio</a>
+          <a href="index.html#blog">Blog</a>
+          <a href="index.html#about">About</a>
+          <a href="index.html#contact">Contact</a>
+        </nav>
       </div>
-    </section>
-  </main>
+    </header>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>© <span id="year"></span> Your Name Photography. All rights reserved.</p>
-    </div>
-  </footer>
+    <main>
+      <section class="section">
+        <div class="container">
+          <a class="btn-link" href="index.html#portfolio"
+            >← Back to portfolio grid</a
+          >
 
-  <script src="config.js"></script>
-  <script src="portfolio-data.js"></script>
-  <script src="portfolio.js"></script>
-</body>
+          <div class="portfolio-page-header">
+            <p class="eyebrow" id="portfolioCategory">Portfolio</p>
+            <h1 id="portfolioTitle">Loading…</h1>
+            <p class="section-intro" id="portfolioDescription">
+              Pulling in images from the selected collection.
+            </p>
+          </div>
+
+          <p id="portfolioError" role="status" hidden></p>
+
+          <div
+            id="portfolioGallery"
+            class="portfolio-gallery"
+            aria-live="polite"
+          ></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          © <span id="year"></span> Your Name Photography. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="portfolios.js"></script>
+    <script src="portfolio.js"></script>
+  </body>
 </html>
