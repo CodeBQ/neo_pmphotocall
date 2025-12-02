@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#0b1120"/>
+  <polyline points="80,500 220,240 360,420 500,180 640,320 820,120" fill="none" stroke="#a855f7" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="80" y="90" fill="#a855f7" font-size="52" font-family="Arial, sans-serif" font-weight="600">Lines & Light</text>
+</svg>

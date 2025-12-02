@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="900" height="600" fill="#020617"/>
+  <g fill="#67e8f9" opacity="0.8">
+    <circle cx="180" cy="200" r="70"/>
+    <circle cx="320" cy="320" r="90"/>
+    <circle cx="540" cy="240" r="110"/>
+    <circle cx="700" cy="340" r="80"/>
+  </g>
+  <text x="50%" y="85%" dominant-baseline="middle" text-anchor="middle" fill="#e5e7eb" font-size="50" font-family="Arial, sans-serif" font-weight="600">
+    Soft Focus Study
+  </text>
+</svg>
