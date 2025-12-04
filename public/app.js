@@ -15,7 +15,7 @@ const statusToggle = document.getElementById("statusToggle");
 if (statusToggle) {
   const states = [
     "Personal project: Night streets on 35mm film.",
-    "On assignment: Portrait series in natural window light."
+    "On assignment: Portrait series in natural window light.",
   ];
   let idx = 0;
   statusToggle.onclick = () => {
@@ -25,16 +25,19 @@ if (statusToggle) {
 }
 
 function normalizeCategory(category) {
-  return (category || "uncategorized").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  return (category || "uncategorized")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-");
 }
 
 function renderPortfolioFilters() {
   const filtersEl = document.getElementById("portfolioFilters");
-  if (!filtersEl || !window.PORTFOLIOS) return;
+  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
+  if (!filtersEl || !portfolios) return;
 
   const categories = Array.from(
     new Set(
-      Object.values(PORTFOLIOS)
+      Object.values(portfolios)
         .map((portfolio) => portfolio.category)
         .filter(Boolean)
     )
@@ -42,6 +45,7 @@ function renderPortfolioFilters() {
 
   const createButton = (label, filterValue, isActive = false) => {
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.className = `filter-btn${isActive ? " active" : ""}`;
     btn.dataset.filter = filterValue;
     btn.textContent = label;
@@ -57,13 +61,27 @@ function renderPortfolioFilters() {
 
 function renderPortfolioGrid() {
   const gridEl = document.getElementById("portfolioGrid");
-  if (!gridEl || !window.PORTFOLIOS) return;
+  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
+  if (!gridEl || !portfolios) return;
 
   gridEl.innerHTML = "";
 
-  Object.entries(PORTFOLIOS).forEach(([slug, portfolio]) => {
+  const resolveImages =
+    typeof resolvePortfolioImages === "function"
+      ? resolvePortfolioImages
+      : (slug) => {
+          const entry = portfolios[slug];
+          const basePath =
+            typeof PORTFOLIO_BASE_PATH === "string" ? PORTFOLIO_BASE_PATH : "";
+          if (!entry) return [];
+          return (entry.images || []).map(
+            (fileName) => `${basePath}${slug}/${fileName}`
+          );
+        };
+
+  Object.entries(portfolios).forEach(([slug, portfolio]) => {
     const categoryKey = normalizeCategory(portfolio.category);
-    const thumbImage = resolvePortfolioImages(slug)[0];
+    const thumbImage = resolveImages(slug)[0];
 
     const article = document.createElement("article");
     article.className = "portfolio-item";
@@ -91,21 +109,25 @@ function renderPortfolioGrid() {
 }
 
 function setupPortfolioFiltering() {
-  const filterButtons = document.querySelectorAll("#portfolioFilters .filter-btn");
-  const portfolioItems = document.querySelectorAll(".portfolio-item");
+  const filtersEl = document.getElementById("portfolioFilters");
+  const gridEl = document.getElementById("portfolioGrid");
 
-  filterButtons.forEach((button) => {
-    button.onclick = () => {
-      const filter = button.dataset.filter;
+  if (!filtersEl || !gridEl) return;
 
-      filterButtons.forEach((b) => b.classList.remove("active"));
-      button.classList.add("active");
+  filtersEl.addEventListener("click", (event) => {
+    const button = event.target.closest(".filter-btn");
+    if (!button) return;
 
-      portfolioItems.forEach((item) => {
-        const cats = item.dataset.category.split(" ");
-        item.style.display = filter === "all" || cats.includes(filter) ? "" : "none";
-      });
-    };
+    const filter = button.dataset.filter;
+    const buttons = filtersEl.querySelectorAll(".filter-btn");
+
+    buttons.forEach((b) => b.classList.toggle("active", b === button));
+
+    gridEl.querySelectorAll(".portfolio-item").forEach((item) => {
+      const cats = item.dataset.category.split(" ");
+      item.style.display =
+        filter === "all" || cats.includes(filter) ? "" : "none";
+    });
   });
 }
 
@@ -139,7 +161,10 @@ function setupBlogPreview() {
 
     previewEl.innerHTML = `
       <h3>${post.title}</h3>
-      ${post.preview.split("\n\n").map((p) => `<p>${p}</p>`).join("")}
+      ${post.preview
+        .split("\n\n")
+        .map((p) => `<p>${p}</p>`)
+        .join("")}
     `;
 
     previewEl.scrollIntoView({ behavior: "smooth" });
@@ -163,9 +188,21 @@ function applySiteConfig() {
 
   if (socialLinksEl) {
     socialLinksEl.innerHTML = `
-      ${socials.instagram ? `<a href="${socials.instagram}" target="_blank">Instagram</a>` : ""}
-      ${socials.youtube ? `<a href="${socials.youtube}" target="_blank">YouTube</a>` : ""}
-      ${socials.twitter ? `<a href="${socials.twitter}" target="_blank">Twitter</a>` : ""}
+      ${
+        socials.instagram
+          ? `<a href="${socials.instagram}" target="_blank">Instagram</a>`
+          : ""
+      }
+      ${
+        socials.youtube
+          ? `<a href="${socials.youtube}" target="_blank">YouTube</a>`
+          : ""
+      }
+      ${
+        socials.twitter
+          ? `<a href="${socials.twitter}" target="_blank">Twitter</a>`
+          : ""
+      }
       ${socials.email ? `<a href="${socials.email}">Email</a>` : ""}
     `;
   }
