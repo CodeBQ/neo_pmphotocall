@@ -24,22 +24,92 @@ if (statusToggle) {
   };
 }
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-const portfolioItems = document.querySelectorAll(".portfolio-item");
+function normalizeCategory(category) {
+  return (category || "uncategorized").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
 
-filterButtons.forEach((button) => {
-  button.onclick = () => {
-    const filter = button.dataset.filter;
+function renderPortfolioFilters() {
+  const filtersEl = document.getElementById("portfolioFilters");
+  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
+  if (!filtersEl || !portfolios) return;
 
-    filterButtons.forEach((b) => b.classList.remove("active"));
-    button.classList.add("active");
+  const categories = Array.from(
+    new Set(
+      Object.values(portfolios)
+        .map((portfolio) => portfolio.category)
+        .filter(Boolean)
+    )
+  );
 
-    portfolioItems.forEach((item) => {
-      const cats = item.dataset.category.split(" ");
-      item.style.display = filter === "all" || cats.includes(filter) ? "" : "none";
-    });
+  const createButton = (label, filterValue, isActive = false) => {
+    const btn = document.createElement("button");
+    btn.className = `filter-btn${isActive ? " active" : ""}`;
+    btn.dataset.filter = filterValue;
+    btn.textContent = label;
+    return btn;
   };
-});
+
+  filtersEl.innerHTML = "";
+  filtersEl.appendChild(createButton("All", "all", true));
+  categories.forEach((category) => {
+    filtersEl.appendChild(createButton(category, normalizeCategory(category)));
+  });
+}
+
+function renderPortfolioGrid() {
+  const gridEl = document.getElementById("portfolioGrid");
+  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
+  if (!gridEl || !portfolios) return;
+
+  gridEl.innerHTML = "";
+
+  Object.entries(portfolios).forEach(([slug, portfolio]) => {
+    const categoryKey = normalizeCategory(portfolio.category);
+    const thumbImage = resolvePortfolioImages(slug)[0];
+
+    const article = document.createElement("article");
+    article.className = "portfolio-item";
+    article.dataset.category = categoryKey;
+
+    const link = document.createElement("a");
+    link.className = "thumb portfolio-link";
+    link.href = `portfolio.html?portfolio=${slug}`;
+    if (thumbImage) {
+      link.style.backgroundImage = `url('${thumbImage}')`;
+    }
+
+    const info = document.createElement("div");
+    info.className = "portfolio-info";
+    info.innerHTML = `
+      <h3><a class="portfolio-link" href="portfolio.html?portfolio=${slug}">${portfolio.title}</a></h3>
+      <p>${portfolio.description}</p>
+      <span class="tag">${portfolio.category}</span>
+    `;
+
+    article.appendChild(link);
+    article.appendChild(info);
+    gridEl.appendChild(article);
+  });
+}
+
+function setupPortfolioFiltering() {
+  const filterButtons = document.querySelectorAll("#portfolioFilters .filter-btn");
+  const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+  filterButtons.forEach((button) => {
+    button.onclick = () => {
+      const filter = button.dataset.filter;
+
+      filterButtons.forEach((b) => b.classList.remove("active"));
+      button.classList.add("active");
+
+      portfolioItems.forEach((item) => {
+        const cats = item.dataset.category.split(" ");
+        item.style.display = filter === "all" || cats.includes(filter) ? "" : "none";
+      });
+    };
+  });
+}
 
 // BLOG LIST RENDERING
 function renderBlogList() {
@@ -105,6 +175,9 @@ function applySiteConfig() {
 
 // Call once on page load
 applySiteConfig();
+renderPortfolioFilters();
+renderPortfolioGrid();
+setupPortfolioFiltering();
 renderBlogList();
 setupBlogPreview();
 
