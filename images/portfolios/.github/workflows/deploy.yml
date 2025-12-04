@@ -1,0 +1,18 @@
+name: Deploy to Neocities
+
+on:
+  push:
+    branches:
+      - main # Or 'master', depending on your default branch name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Deploy to Neocities
+        uses: bcomnes/deploy-to-neocities@v1 # Or a more recent version if available
+        with:
+          cleanup: true # Set to true to delete files on Neocities not present in your public folder
+          dist_dir: public # The directory containing your website files
+          api_token: ${{ secrets.NEOCITIES_API_TOKEN }}
