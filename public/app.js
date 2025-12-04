@@ -30,12 +30,11 @@ function normalizeCategory(category) {
 
 function renderPortfolioFilters() {
   const filtersEl = document.getElementById("portfolioFilters");
-  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
-  if (!filtersEl || !portfolios) return;
+  if (!filtersEl || !window.PORTFOLIOS) return;
 
   const categories = Array.from(
     new Set(
-      Object.values(portfolios)
+      Object.values(PORTFOLIOS)
         .map((portfolio) => portfolio.category)
         .filter(Boolean)
     )
@@ -58,25 +57,13 @@ function renderPortfolioFilters() {
 
 function renderPortfolioGrid() {
   const gridEl = document.getElementById("portfolioGrid");
-  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
-  if (!gridEl || !portfolios) return;
+  if (!gridEl || !window.PORTFOLIOS) return;
 
   gridEl.innerHTML = "";
 
-  const resolveImages =
-    typeof resolvePortfolioImages === "function"
-      ? resolvePortfolioImages
-      : (slug) => {
-          const entry = portfolios[slug];
-          const basePath =
-            typeof PORTFOLIO_BASE_PATH === "string" ? PORTFOLIO_BASE_PATH : "";
-          if (!entry) return [];
-          return (entry.images || []).map((fileName) => `${basePath}${slug}/${fileName}`);
-        };
-
-  Object.entries(portfolios).forEach(([slug, portfolio]) => {
+  Object.entries(PORTFOLIOS).forEach(([slug, portfolio]) => {
     const categoryKey = normalizeCategory(portfolio.category);
-    const thumbImage = resolveImages(slug)[0];
+    const thumbImage = resolvePortfolioImages(slug)[0];
 
     const article = document.createElement("article");
     article.className = "portfolio-item";
