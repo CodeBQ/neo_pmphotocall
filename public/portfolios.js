@@ -23,12 +23,12 @@ const PORTFOLIOS = {
       "Neon signs, crosswalk silhouettes, and long exposures of late-night avenues.",
     images: ["shot1.svg", "shot2.svg", "shot3.svg"],
   },
-  portfolio3: {
-    title: "Coastal Light",
+  portfolio_night_skies: {
+    title: "Night Skies",
     category: "Landscapes",
     description:
       "Foggy mornings, rocky shores, and pastel sunsets along the coastline.",
-    images: ["coast-1.svg", "coast-2.svg", "coast-3.svg"],
+    images: ["Night_sky_land.jpg", "Night_sky_moon.jpg"],
   },
 };
 
