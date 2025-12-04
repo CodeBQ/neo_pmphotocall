@@ -24,22 +24,107 @@ if (statusToggle) {
   };
 }
 
-const filterButtons = document.querySelectorAll(".filter-btn");
-const portfolioItems = document.querySelectorAll(".portfolio-item");
+function normalizeCategory(category) {
+  return (category || "uncategorized").toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
 
-filterButtons.forEach((button) => {
-  button.onclick = () => {
+function renderPortfolioFilters() {
+  const filtersEl = document.getElementById("portfolioFilters");
+  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
+  if (!filtersEl || !portfolios) return;
+
+  const categories = Array.from(
+    new Set(
+      Object.values(portfolios)
+        .map((portfolio) => portfolio.category)
+        .filter(Boolean)
+    )
+  );
+
+  const createButton = (label, filterValue, isActive = false) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = `filter-btn${isActive ? " active" : ""}`;
+    btn.dataset.filter = filterValue;
+    btn.textContent = label;
+    return btn;
+  };
+
+  filtersEl.innerHTML = "";
+  filtersEl.appendChild(createButton("All", "all", true));
+  categories.forEach((category) => {
+    filtersEl.appendChild(createButton(category, normalizeCategory(category)));
+  });
+}
+
+function renderPortfolioGrid() {
+  const gridEl = document.getElementById("portfolioGrid");
+  const portfolios = typeof PORTFOLIOS !== "undefined" ? PORTFOLIOS : undefined;
+  if (!gridEl || !portfolios) return;
+
+  gridEl.innerHTML = "";
+
+  const resolveImages =
+    typeof resolvePortfolioImages === "function"
+      ? resolvePortfolioImages
+      : (slug) => {
+          const entry = portfolios[slug];
+          const basePath =
+            typeof PORTFOLIO_BASE_PATH === "string" ? PORTFOLIO_BASE_PATH : "";
+          if (!entry) return [];
+          return (entry.images || []).map((fileName) => `${basePath}${slug}/${fileName}`);
+        };
+
+  Object.entries(portfolios).forEach(([slug, portfolio]) => {
+    const categoryKey = normalizeCategory(portfolio.category);
+    const thumbImage = resolveImages(slug)[0];
+
+    const article = document.createElement("article");
+    article.className = "portfolio-item";
+    article.dataset.category = categoryKey;
+
+    const link = document.createElement("a");
+    link.className = "thumb portfolio-link";
+    link.href = `portfolio.html?portfolio=${slug}`;
+    if (thumbImage) {
+      link.style.backgroundImage = `url('${thumbImage}')`;
+    }
+
+    const info = document.createElement("div");
+    info.className = "portfolio-info";
+    info.innerHTML = `
+      <h3><a class="portfolio-link" href="portfolio.html?portfolio=${slug}">${portfolio.title}</a></h3>
+      <p>${portfolio.description}</p>
+      <span class="tag">${portfolio.category}</span>
+    `;
+
+    article.appendChild(link);
+    article.appendChild(info);
+    gridEl.appendChild(article);
+  });
+}
+
+function setupPortfolioFiltering() {
+  const filtersEl = document.getElementById("portfolioFilters");
+  const gridEl = document.getElementById("portfolioGrid");
+
+  if (!filtersEl || !gridEl) return;
+
+  filtersEl.addEventListener("click", (event) => {
+    const button = event.target.closest(".filter-btn");
+    if (!button) return;
+
     const filter = button.dataset.filter;
+    const buttons = filtersEl.querySelectorAll(".filter-btn");
 
-    filterButtons.forEach((b) => b.classList.remove("active"));
-    button.classList.add("active");
+    buttons.forEach((b) => b.classList.toggle("active", b === button));
 
-    portfolioItems.forEach((item) => {
+    gridEl.querySelectorAll(".portfolio-item").forEach((item) => {
       const cats = item.dataset.category.split(" ");
       item.style.display = filter === "all" || cats.includes(filter) ? "" : "none";
     });
-  };
-});
+  });
+}
 
 // BLOG LIST RENDERING
 function renderBlogList() {
@@ -105,6 +190,9 @@ function applySiteConfig() {
 
 // Call once on page load
 applySiteConfig();
+renderPortfolioFilters();
+renderPortfolioGrid();
+setupPortfolioFiltering();
 renderBlogList();
 setupBlogPreview();
 
