@@ -4,16 +4,24 @@
 const PORTFOLIO_BASE_PATH = "images/portfolios/";
 
 const PORTFOLIOS = {
-  portfolio1: {
-    title: "Sn 110 Cards",
-    category: "Product Pictures",
+  Yerevan_zorki4: {
+    title: "Zorki 4 - Yerevan",
+    category: "Film",
     description:
-      "Soft backlight portraits, window-lit studio frames, and a few cinematic street studies in one set.",
+      "I bought this camera in Yerevan and tried a test shot around the city.",
     images: [
-      "sn-u-110 cards.webp",
-      "sn-u-110 cards2.webp",
-      "sn-u-110 cards3.webp",
-      "sn-u-110 cards4.webp",
+      "Boxlab26.jpg",
+      "Boxlab07.jpg",
+      "Boxlab08.jpg",
+      "Boxlab11.jpg",
+      "Boxlab12.jpg",
+      "Boxlab16.jpg",
+      "Boxlab17.jpg",
+      "Boxlab21.jpg",
+      "Boxlab22.jpg",
+      "Boxlab24.jpg",
+      "Boxlab25.jpg",
+      "Boxlab27.jpg",
     ],
   },
   portfolio2: {
