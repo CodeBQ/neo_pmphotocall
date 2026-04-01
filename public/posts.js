@@ -75,20 +75,6 @@ const BLOG_POSTS = [
     ],
   },
   {
-    slug: "why-35mm-film",
-    title: "Why I Still Shoot 35mm Film in a Digital World",
-    category: "Film",
-    readTime: "5 min read",
-    excerpt:
-      "Film slows me down and changes the way I see. Here’s how that affects my process.",
-    preview: `Film makes every frame a small decision...`,
-    body: [
-      `Digital cameras are incredible...`,
-      `Because I can’t chimp the back...`,
-      `The delay between shooting and seeing...`,
-    ],
-  },
-  {
     slug: "35mm-film-in-116-camera",
     title: "Manually Load and Advance 35mm Film (135) in a 616 Camera",
     category: "Film",
